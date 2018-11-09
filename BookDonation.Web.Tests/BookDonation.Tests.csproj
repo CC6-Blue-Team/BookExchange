@@ -99,7 +99,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\1. BookDonation.Web\BookDonation.Web.csproj">
+    <ProjectReference Include="..\BookDonation.Web\BookDonation.Web.csproj">
       <Project>{0980DF50-2561-48DA-BA1D-39AD2E110249}</Project>
       <Name>BookDonation.Web</Name>
     </ProjectReference>

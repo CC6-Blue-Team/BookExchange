@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Web", "1. BookDonation.Web\BookDonation.Web.csproj", "{0980DF50-2561-48DA-BA1D-39AD2E110249}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Tests", "1. BookDonation.Web.Tests\BookDonation.Tests.csproj", "{A4FE55C7-4E69-4F07-B376-68CC889DF569}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.DB", "BookDonation.DB\BookDonation.DB.csproj", "{ADD0F74A-6BA4-4334-941E-42FE65715CA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Business", "4. BookDonation.Business\BookDonation.Business.csproj", "{90A8F516-0583-42CF-A5EC-8C812B429A69}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.DBQueries", "BookDonation.DBQueries\BookDonation.DBQueries.csproj", "{47D5F6F1-E288-4000-B22E-5926481A6BD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Web", "BookDonation.Web\BookDonation.Web.csproj", "{0980DF50-2561-48DA-BA1D-39AD2E110249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Tests", "BookDonation.Web.Tests\BookDonation.Tests.csproj", "{A4FE55C7-4E69-4F07-B376-68CC889DF569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDonation.Business", "BookDonation.Business\BookDonation.Business.csproj", "{90A8F516-0583-42CF-A5EC-8C812B429A69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0980DF50-2561-48DA-BA1D-39AD2E110249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0980DF50-2561-48DA-BA1D-39AD2E110249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0980DF50-2561-48DA-BA1D-39AD2E110249}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,18 +35,10 @@ Global
 		{A4FE55C7-4E69-4F07-B376-68CC889DF569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4FE55C7-4E69-4F07-B376-68CC889DF569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4FE55C7-4E69-4F07-B376-68CC889DF569}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADD0F74A-6BA4-4334-941E-42FE65715CA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90A8F516-0583-42CF-A5EC-8C812B429A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90A8F516-0583-42CF-A5EC-8C812B429A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A8F516-0583-42CF-A5EC-8C812B429A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A8F516-0583-42CF-A5EC-8C812B429A69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47D5F6F1-E288-4000-B22E-5926481A6BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
