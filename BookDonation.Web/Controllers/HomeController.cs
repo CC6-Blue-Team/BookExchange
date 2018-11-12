@@ -15,14 +15,28 @@ namespace _1.BookDonation.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "BookBank6 is a book exchange website.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "";
+
+            return View();
+        }
+
+        public ActionResult Donnate()
+        {
+            ViewBag.Message = "To be populated ";
+
+            return View();
+        }
+
+        public ActionResult Reserve()
+        {
+            ViewBag.Message = "To be populated ";
 
             return View();
         }
