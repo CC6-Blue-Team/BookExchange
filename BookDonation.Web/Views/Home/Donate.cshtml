@@ -1,10 +1,11 @@
-﻿@{
+﻿@model BookDonation.Web.BooksViewModels.DonateBookVM
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    ViewBag.Title = "Donnate a book";
+    ViewBag.Title = "";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
 <div class="title">
@@ -13,35 +14,61 @@
 
 <div class="top">
     <div class="instructions">
-        <ol>
-           Complete form to donate books. 
+        <div class="ptext">
+            <ol>
+                Complete form to donate books.
+                Be sure to include how many books you would like to donate. 
 
-        </ol>
-
+            </ol>
+        </div>
     </div>
 
-    <div class="form_donate">
-        <form id="reserveForm" action="">
-            Book Title:<br />
-            <input type="text" name="BookTitle" value="" />
-            <br /><br />
-            Author:<br />
-            <input type="text" name="Author" value="" />
-            <br /><br />
-            ISBN:<br />
-            <input type="text" name="ISBN" value="" />
-            <br /><br />
-            Genre:<br />
-            <input type="text" name="Genre" value="" />
-            <br /><br />
-            Quantity:<br />
-            <input type="text" name="Quantity" value="" />
-            <br /><br />
-            <input id="Reserve" type="submit" value="submit" />
-            <input id="Cancel" type="reset" value="reset" />
-        </form>
-    </div>
+    @using (Html.BeginForm())
+    {
+    <fieldset>
+        <div class="title-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.Title)
+        </div>
+        <div class="title-label">
+            @Html.LabelFor(model => model.Author)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.Author)
+        </div>
+        <div class="title-label">
+            @Html.LabelFor(model => model.ISBN)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.ISBN)
+        </div>
+        <div class="title-label">
+            @Html.LabelFor(model => model.Genre)
+        </div>
+
+        <div class="title-field">
+            @Html.DropDownListFor(model => model.Genre, Model.Genre)
+        </div>
+
+        <div class="title-label">
+            @Html.LabelFor(model => model.QtyAvailable)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.QtyAvailable)
+        </div>
+
+        @*<div class="title-field">
+            @Html.
+        </div>*@
+        <br /><br />
+        <input id="Reserve" type="submit" value="submit" />
+        <input id="Cancel" type="reset" value="reset" />
+    </fieldset>
+    }
 </div>
+
 
 
 

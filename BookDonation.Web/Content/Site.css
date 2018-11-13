@@ -65,6 +65,13 @@ textarea {
     width: 40%;
 }
 
+.ptext {
+    font-weight: bold;
+    color: #603913;
+    text-align:left;
+    width: 40%;
+}
+
 /*ID*/
 #reserveForm {
     width: 90%;

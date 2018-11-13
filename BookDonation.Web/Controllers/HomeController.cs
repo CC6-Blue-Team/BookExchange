@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookDonation.Web.BooksViewModels;
 
 namespace _1.BookDonation.Web.Controllers
 {
@@ -31,7 +32,7 @@ namespace _1.BookDonation.Web.Controllers
         {
             ViewBag.Message = "";
 
-            return View();
+            return View(new DonateBookVM());
         }
 
         public ActionResult Reserve()
@@ -40,5 +41,13 @@ namespace _1.BookDonation.Web.Controllers
 
             return View();
         }
+
+        public ActionResult RequestBook()
+        {
+            ViewBag.Message = "";
+
+            return View(new RequestBookVM());
+        }
+
     }
 }
