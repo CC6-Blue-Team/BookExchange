@@ -66,6 +66,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811092352342_InitialCreate.resx">
+      <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BookDonation.Business\BookDonation.Business.csproj">
       <Project>{90a8f516-0583-42cf-a5ec-8c812b429a69}</Project>
       <Name>BookDonation.Business</Name>
@@ -74,15 +79,6 @@
       <Project>{47d5f6f1-e288-4000-b22e-5926481a6bd2}</Project>
       <Name>BookDonation.DBQueries</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookDonation.Web\BookDonation.Web.csproj">
-      <Project>{0980df50-2561-48da-ba1d-39ad2e110249}</Project>
-      <Name>BookDonation.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811092352342_InitialCreate.resx">
-      <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

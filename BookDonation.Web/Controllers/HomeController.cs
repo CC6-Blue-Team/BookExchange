@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookDonation.Web.BooksViewModels;
+using BookDonation.DB;
+
 
 namespace _1.BookDonation.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private BookDonationDb db = new BookDonationDb();
+
         public ActionResult Index()
         {
             return View();
@@ -40,17 +44,17 @@ namespace _1.BookDonation.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,YearRelease,GenreID,Price")] Movies movies)
+        public ActionResult Create([Bind(Include = "Id,Title,ISBN,Image,QtyAvailable,GenreId,AuthorId")] Books books)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movies);
+                db.Books.Add(books);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GenreID = new SelectList(db.Genre, "ID", "Name", movies.GenreID);
-            return View(movies);
+            ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name", books.GenreId);
+            return View(books);
         }
 
 

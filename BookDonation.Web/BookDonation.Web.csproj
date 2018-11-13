@@ -291,6 +291,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookDonation.Business\BookDonation.Business.csproj">
+      <Project>{90a8f516-0583-42cf-a5ec-8c812b429a69}</Project>
+      <Name>BookDonation.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookDonation.DB\BookDonation.DB.csproj">
+      <Project>{add0f74a-6ba4-4334-941e-42fe65715ca1}</Project>
+      <Name>BookDonation.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
