@@ -35,7 +35,8 @@ namespace _1.BookDonation.Web.Controllers
         // GET: Movies/Create
         public ActionResult Donate()
         {
-            ViewBag.Message = new SelectList(db.Books, "ID", "Title", "ISBN", "Image", "QtyAvailable", "GenreId", "AuthorId");
+            ViewBag.Message = new SelectList(db.Books, "Title", "ISBN", "Image", "QtyAvailable", "GenreId", "AuthorId");
+            //(db.Books, "ID", "Title", "ISBN", "Image", "QtyAvailable", "GenreId", "AuthorId");
             return View();
         }
 
