@@ -9,6 +9,8 @@ namespace BookDonation.Web.BooksViewModels
 {
     public class RequestBookVM
     {
+        
+
         [Required]
         [StringLength(50, MinimumLength = 3,
            ErrorMessage = "Title is required")]

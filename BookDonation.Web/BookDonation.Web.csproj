@@ -273,6 +273,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Reserve.cshtml" />
     <Content Include="Views\Home\Donate.cshtml" />
+    <Content Include="Views\Home\Request.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

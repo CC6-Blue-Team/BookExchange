@@ -46,7 +46,7 @@ namespace _1.BookDonation.Web.Controllers
         {
             ViewBag.Message = "";
 
-            return View(new RequestBookVM());
+            return View();
         }
 
     }

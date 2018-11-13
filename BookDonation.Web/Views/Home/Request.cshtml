@@ -1,0 +1,52 @@
+﻿@model BookDonation.Web.BooksViewModels.RequestBookVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<div class="title">
+    <h1>Request</h1>
+</div>
+
+<div class="instructions">
+    <div class="ptext">
+        <ol>
+            1. Enter Book Title and Author.
+
+            2. Submit request.
+        </ol>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <div class="title-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.Title)
+        </div>
+        <div class="title-label">
+            @Html.LabelFor(model => model.Author)
+        </div>
+        <div class="title-field">
+            @Html.TextBoxFor(model => model.Author)
+        </div>
+        <br /><br />
+        <input id="Reserve" type="submit" value="submit" />
+        <input id="Cancel" type="reset" value="reset" />
+    </fieldset>
+}
+
+
+
+
+
+
