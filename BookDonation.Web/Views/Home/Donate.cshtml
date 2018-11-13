@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Donnate a book";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="title">
+    <h1>Donate</h1>
+</div>
+
+<div class="top">
+    <div class="instructions">
+        <ol>
+           Complete form to donate books. 
+
+        </ol>
+
+    </div>
+
+    <div class="form_donate">
+        <form id="reserveForm" action="">
+            Book Title:<br />
+            <input type="text" name="BookTitle" value="" />
+            <br /><br />
+            Author:<br />
+            <input type="text" name="Author" value="" />
+            <br /><br />
+            ISBN:<br />
+            <input type="text" name="ISBN" value="" />
+            <br /><br />
+            Genre:<br />
+            <input type="text" name="Genre" value="" />
+            <br /><br />
+            Quantity:<br />
+            <input type="text" name="Quantity" value="" />
+            <br /><br />
+            <input id="Reserve" type="submit" value="submit" />
+            <input id="Cancel" type="reset" value="reset" />
+        </form>
+    </div>
+</div>
+
+
+

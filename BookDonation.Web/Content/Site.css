@@ -1,12 +1,15 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +24,55 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*Class*/
+.designBox {
+    margin:auto;
+    background-color: white;
+    background-image: url("..\images\book2_img.png");
+    width: 50%; 
+}
+
+.title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #5ebb47;
+}
+
+.top {
+    clear:both;
+}
+
+.headerimage {
+    width: 90%;
+    background-image: url("..\images\bookreading_img.jpg");
+    image-resolution:inherit;
+}
+
+.form_donate {
+    float:right;
+    width: 60%;
+}
+
+.form_reserve {
+    float:right;
+    width: 60%;
+    padding:5px;
+}
+
+.instructions {
+    float: left;
+    width: 40%;
+}
+
+/*ID*/
+#reserveForm {
+    width: 90%;
+}
+
+#footer {
+    clear: both;
+    width: 100%;
+    height: 20%;
+    background-color: #5ebb47;
 }

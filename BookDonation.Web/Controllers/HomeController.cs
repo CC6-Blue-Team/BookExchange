@@ -27,16 +27,16 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-        public ActionResult Donnate()
+        public ActionResult Donate()
         {
-            ViewBag.Message = "To be populated ";
+            ViewBag.Message = "";
 
             return View();
         }
 
         public ActionResult Reserve()
         {
-            ViewBag.Message = "To be populated ";
+            ViewBag.Message = "";
 
             return View();
         }
