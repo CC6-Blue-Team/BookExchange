@@ -194,6 +194,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BooksViewModels\BookModel.cs" />
     <Compile Include="BooksViewModels\DonateBookVM.cs" />
     <Compile Include="BooksViewModels\RequestBookVM.cs" />
     <Compile Include="BooksViewModels\ReserveBookVM.cs" />
@@ -289,6 +290,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookDonation.DBQueries\BookDonation.DBQueries.csproj">
+      <Project>{47d5f6f1-e288-4000-b22e-5926481a6bd2}</Project>
+      <Name>BookDonation.DBQueries</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

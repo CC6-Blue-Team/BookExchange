@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookDonation.DBQueries\BookDonation.DBQueries.csproj">
+      <Project>{47d5f6f1-e288-4000-b22e-5926481a6bd2}</Project>
+      <Name>BookDonation.DBQueries</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookDonation.Web\BookDonation.Web.csproj">
       <Project>{0980df50-2561-48da-ba1d-39ad2e110249}</Project>
       <Name>BookDonation.Web</Name>
