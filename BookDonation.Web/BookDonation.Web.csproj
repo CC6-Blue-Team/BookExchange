@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BooksViewModels\DonateBookVM.cs" />
+    <Compile Include="BooksViewModels\RequestBookVM.cs" />
     <Compile Include="BooksViewModels\ReserveBookVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
