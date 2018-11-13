@@ -55,5 +55,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookDonation.Web\BookDonation.Web.csproj">
+      <Project>{0980df50-2561-48da-ba1d-39ad2e110249}</Project>
+      <Name>BookDonation.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

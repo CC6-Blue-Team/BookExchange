@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BookDonation.DBQueries; 
+//using BookDonation.DBQueries; 
 using BookDonation.Web.BooksViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
