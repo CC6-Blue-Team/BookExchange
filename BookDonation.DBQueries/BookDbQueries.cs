@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookDonation.DBQueries
 {
-    class BookSearch
+    public class BookDbQueries
     {
     }
 }

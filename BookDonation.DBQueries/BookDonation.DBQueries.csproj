@@ -48,9 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookRequest.cs" />
-    <Compile Include="BookReservation.cs" />
-    <Compile Include="BookSearch.cs" />
+    <Compile Include="BookDbQueries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
