@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BookDonation.DB;
+using BookDonation.DBQueries; 
+using BookDonation.Web.BooksViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Reflection;
@@ -23,40 +24,30 @@ namespace BookDonation.Web.BooksViewModels
         //from author models
         public virtual string Name { get; set; }
         //from genre models
-        public virtual int GenreId { get; set; }
         public virtual string Genre { get; set; }
+        //from exchange models
+        public virtual DateTime PickupDeadline { get; set; }
+        public virtual DateTime ActionDate { get; set; }
+        public virtual int BookId { get; set; }
+        public virtual int ActionByUserId { get; set; }
+        public virtual int ActionId { get; set; }
+        //from action
+
 
 
     }
-        public string InactiveStatus
-    {
-        get
-        {
-            var listProperties = IsDeleted;
-
-            if (IsDeleted)
-            {
-                return "Discontinued";
-            }
-            else
-            {
-                return "Active";
-            }
-        }
-    }
-
-}
+       
 public class UpdateBookInventory
     {
         public string Name { get; set; }
         public int Quantity { get; set; }
         public int ID { get; set; }
-        public int PInventoryID { get; set; }
+        public int BookId { get; set; }
         public bool IsDeleted { get; set; }
     }
     public class BookModel
     {
-        public List<BookInventoryModel> BInventoryList { get; set; }
+        public List<BookModel> BInventoryList { get; set; }
 
         //sizes for Create View dropdown list
         public IEnumerable<SelectListItem> Genre
