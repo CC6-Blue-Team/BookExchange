@@ -108,6 +108,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BooksViewModels\BookModel.cs" />
+    <Compile Include="BooksViewModels\DonateBookVM.cs" />
+    <Compile Include="BooksViewModels\RequestBookVM.cs" />
+    <Compile Include="BooksViewModels\ReserveBookVM.cs" />
     <Compile Include="Migrations\201811092352342_InitialCreate.cs" />
     <Compile Include="Migrations\201811092352342_InitialCreate.Designer.cs">
       <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
@@ -131,16 +135,6 @@
     <EmbeddedResource Include="Migrations\201811092352342_InitialCreate.resx">
       <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BookDonation.Business\BookDonation.Business.csproj">
-      <Project>{90a8f516-0583-42cf-a5ec-8c812b429a69}</Project>
-      <Name>BookDonation.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookDonation.DBQueries\BookDonation.DBQueries.csproj">
-      <Project>{47d5f6f1-e288-4000-b22e-5926481a6bd2}</Project>
-      <Name>BookDonation.DBQueries</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.intellisense.js" />

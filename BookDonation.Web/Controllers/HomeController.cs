@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BookDonation.Web.BooksViewModels;
-using BookDonation.Web; 
+//using BookDonation.DB.BooksViewModels;
+using BookDonation.DB;
+using BookDonation.DBQueries;
 
 
 
@@ -50,7 +51,7 @@ namespace _1.BookDonation.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "ID,Sku,Name,AlertThreshHold,Size,Quantity")] Database.Models.ProductAddVM product)
-        public ActionResult Create([Bind(Include = "Author,BookTitle,ISBN,Genre,Quantity")] DonateBookVM donateBook)
+        public ActionResult Donate([Bind(Include = "Title,Author,ISBN,Quantity,Genre")] DonateBookVM donateBook)
         {
             ///*ModelState["ApplicationUser"].Errors.Clear();  /*//Required since ApplicationUser is NOT populated by the user in the view.
 
@@ -71,15 +72,20 @@ namespace _1.BookDonation.Web.Controllers
             }
 
             int pID = 0;
-            var results = BookDbQueries.BooksInventory();
+            BookDonationDb db = new BookDonationDb();
+            var results = BookDbQueries.BookRequestFromInventory(db);
             findTitle = donateBook.Title.Trim().ToUpper();
             foreach (var item in results)
             {
+                //    Title = item.Title,
+                Author = item.Name,
+                //    GenreId = item.GenreId,
+                //    BookId = item.BookId
                 if (findTitle == item.Title.Trim().ToUpper())
                     ProductExists = true;
                 if (ProductExists)
                 {
-                    pID = item.ID;
+                    pID = item.Id;
                     break;
                 }
             };
