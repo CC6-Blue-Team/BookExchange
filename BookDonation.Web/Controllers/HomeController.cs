@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BookDonation.DB.BooksViewModels;
 using BookDonation.DB;
 using BookDonation.DBQueries;
+using System.Net;
 
 namespace _1.BookDonation.Web.Controllers
 {
@@ -32,78 +33,135 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-
-        // GET: Books/donate
-        public ActionResult Donate()
+        // GET: Books/Cart/
+        public ActionResult DonateCart(int? id)
         {
-            var pm = new DonateBookVM();
-            return View(pm);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Books myBooks = db.Books.Find(id);
+
+
+            if (myBooks == null)
+            {
+                return HttpNotFound();
+            }
+
+            //ViewBag.tax = movies.Price * 0.08;
+            //CalcTax ct = new CalcTax();
+            DonateBookVM donateCart = new DonateBookVM();
+
+            donateCart.Title = myBooks.Title;
+            donateCart.ISBN = myBooks.ISBN;
+            //donateCart.QtyAvailable = ct.GetTax(donateCart.Price);
+            //donateCart.Total = myCart.Price + (ct.GetTax(donateCart.Price));
+
+            //ViewBag.Total = myCart.Total;
+            //ViewBag.Tax = myCart.Tax;
+
+            return View(donateCart);
+
         }
 
+        // GET: Books/Donate
+        public ActionResult Donate()
+        {
+            var books = new Books();
+            return View();
+        }
 
-        // POST: Products/Create
+        // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,Sku,Name,AlertThreshHold,Size,Quantity")] Database.Models.ProductAddVM product)
-        public ActionResult Donate([Bind(Include = "ID,Title,ISBN,Image,QtyAvailable,GenreId,AuthorId")] DonateBookVM donateBook)
+        public ActionResult Donate([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
         {
-            ///*ModelState["ApplicationUser"].Errors.Clear();  /*//Required since ApplicationUser is NOT populated by the user in the view.
-
-            if (!ModelState.IsValid)
-                return View();
-
-            if (donateBook.Title == null)
-                return View(donateBook);
-
-            //determine if a Product already exists with the same Title
-            bool ProductExists = false;
-
-            ViewBag.message = "";
-
-            string findTitle = "";
-            findTitle = donateBook.Title.Trim().ToUpper();
-
-            //Products have to have a unique Sku
-            if (findTitle == "N/A" || findTitle == "NA" || findTitle == "N A")
+            if (ModelState.IsValid)
             {
-                ViewBag.message = "Input a Valid BookTitle - don't use N/A or NA or N A";
-                return View();
-            }
-
-            int pID = 0;
-            BookDonationDb db = new BookDonationDb();
-            var results = BookDbQueries.BookRequestFromInventory(db);
-            findTitle = donateBook.Title.Trim().ToUpper();
-            foreach (var item in results)
-            {
-
-                if (findTitle == item.Title.Trim().ToUpper())
-                    ProductExists = true;
-                if (ProductExists)
-                {
-                    pID = item.ID;
-                    break;
-                }
-
-
-                var book = new Books
-                {
-                    Title = donateBook.Title,
-                    ISBN = donateBook.ISBN,
-                    QtyAvailable = donateBook.QtyAvailable,
-                };
-                
-                
-
-                        db.Books.Add(book);
+                db.Books.Add(books);
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-      
+
+            //ViewBag.GenreId = new SelectList(db.Genre, "Id", "Type", books.Genre);
             return View();
         }
-    
+
+
+
+        //// GET: Books/donate
+        //public ActionResult Donate()
+        //{
+        //    var myBooks = new Books();
+        //    return View(myBooks);
+        //}
+
+
+        //// POST: Products/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        ////public ActionResult Create([Bind(Include = "ID,Sku,Name,AlertThreshHold,Size,Quantity")] Database.Models.ProductAddVM product)
+        //public ActionResult Donate([Bind(Include = "ID,Title,ISBN,Image,QtyAvailable,GenreId,AuthorId")] Books myBooks)
+        //{
+        //    ///*ModelState["ApplicationUser"].Errors.Clear();  /*//Required since ApplicationUser is NOT populated by the user in the view.
+
+        //    if (!ModelState.IsValid)
+        //        return View();
+
+        //    if (myBooks.Title == null)
+        //        return View(myBooks);
+
+        //    //determine if a Product already exists with the same Title
+        //    bool BookExists = false;
+
+        //    ViewBag.message = "";
+
+        //    string findTitle = "";
+        //    findTitle = myBooks.Title.Trim().ToUpper();
+
+        //    //Products have to have a unique Sku
+        //    if (findTitle == "N/A" || findTitle == "NA" || findTitle == "N A")
+        //    {
+        //        ViewBag.message = "Input a Valid BookTitle - don't use N/A or NA or N A";
+        //        return View();
+        //    }
+
+        //    int pID = 0;
+        //    BookDonationDb db = new BookDonationDb();
+        //    var results = BookDbQueries.BookRequestFromInventory(db);
+        //    findTitle = myBooks.Title.Trim().ToUpper();
+        //    foreach (var item in results)
+        //    {
+
+        //        if (findTitle == item.Title.Trim().ToUpper())
+        //            BookExists = true;
+        //        if (BookExists)
+        //        {
+        //            pID = item.ID;
+        //            break;
+        //        }
+
+
+        //        var book = new Books
+        //        {
+        //            Title = myBooks.Title,
+        //            ISBN = myBooks.ISBN,
+        //            QtyAvailable = myBooks.QtyAvailable,
+        //        };
+
+
+
+        //                db.Books.Add(book);
+        //                db.SaveChanges();
+        //    }
+
+        //    return View();
+        //}
+
 
 
         public ActionResult Reserve()
