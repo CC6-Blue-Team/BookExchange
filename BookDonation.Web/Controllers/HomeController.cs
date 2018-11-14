@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookDonation.Web.BooksViewModels;
-using BookDonation.DB;
-using BookDonation.DBQueries;
+using BookDonation.Web; 
+
+
+
 
 
 namespace _1.BookDonation.Web.Controllers
@@ -69,7 +71,7 @@ namespace _1.BookDonation.Web.Controllers
             }
 
             int pID = 0;
-            var results =BookDbQueries.GetAllGiftShopInventory();
+            var results = BookDbQueries.BooksInventory();
             findTitle = donateBook.Title.Trim().ToUpper();
             foreach (var item in results)
             {

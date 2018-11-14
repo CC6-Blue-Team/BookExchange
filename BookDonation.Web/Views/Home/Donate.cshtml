@@ -9,7 +9,11 @@
 <h3>@ViewBag.Message</h3>
 
 <div class="title">
+
     <h1>Donate</h1>
+    @using (Html.BeginForm("Donate", "Donate", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 </div>
 
 <div class="top">
@@ -20,6 +24,7 @@
         </ol>
 
     </div>
+
 
     <div class="form_donate">
         <form id="reserveForm" action="">
@@ -45,5 +50,5 @@
     </div>
 </div>
 
-
+    }
 

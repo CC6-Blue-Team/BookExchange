@@ -7,8 +7,9 @@ using BookDonation.DBQueries;
 using System.Configuration;
 using System.Net.Mail;
 using System.Net;
-using System.Text;
-using BookDonation.Web.BooksViewModels;
+using System.Web;
+ 
+
 
 
 
