@@ -1,5 +1,47 @@
-﻿@{
+﻿@model BookDonation.DB.BooksViewModels.DonateBookVM
+
+
+@{
+    ViewBag.Title = "Donation Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Donation Cart</h2>
+
+<div>
+    <h4>Donated Books</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayName("Sales Tax")
+        </dt>
+        <dd>
+            @ViewBag.Tax
+        </dd>
+        <dt>
+            @Html.DisplayName("Total Price")
+        </dt>
+        <dd>
+            @ViewBag.Total
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 

@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201811092352342_InitialCreate.Designer.cs">
       <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811141931290_AddGenAuthActFields.cs" />
+    <Compile Include="Migrations\201811141931290_AddGenAuthActFields.Designer.cs">
+      <DependentUpon>201811141931290_AddGenAuthActFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actions.cs" />
     <Compile Include="Models\Authors.cs" />
@@ -134,6 +138,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811092352342_InitialCreate.resx">
       <DependentUpon>201811092352342_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811141931290_AddGenAuthActFields.resx">
+      <DependentUpon>201811141931290_AddGenAuthActFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

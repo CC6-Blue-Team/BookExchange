@@ -19,7 +19,9 @@ namespace BookDonation.DB
         public virtual byte QtyAvailable { get; set; }
        // public virtual byte QtyReserved { get; set; }
         public virtual int GenreId { get; set; }
+        public virtual Genres genres { get; set; }
         public virtual int AuthorId { get; set; }
+        public virtual Authors authors { get; set; }
 
 
 

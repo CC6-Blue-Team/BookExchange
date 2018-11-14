@@ -17,6 +17,7 @@ namespace BookDonation.DB.BooksViewModels
             ErrorMessage = "Title is required")]
         public string Title { get; set; }
         
+
         [StringLength(200, MinimumLength = 5,
             ErrorMessage = "Author name is required")]
         public string Author { get; set; }
@@ -25,8 +26,8 @@ namespace BookDonation.DB.BooksViewModels
             ErrorMessage = "ISBN is required")]
         public string ISBN { get; set; }
 
-        [Range(0, int.MaxValue,
-            ErrorMessage = "Please enter a Quantity value 0 or greater")]
+        [Range(1, int.MaxValue,
+            ErrorMessage = "Please enter a Quantity value 1 or greater")]
         public byte QtyAvailable { get; set; }
 
         public IEnumerable<SelectListItem> Genre
