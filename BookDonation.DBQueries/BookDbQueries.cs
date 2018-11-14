@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using BookDonation.DBQueries;
 using System.Data.Entity;
 using BookDonation.DB;
+using BookDonation.DB.BooksViewModels;
 
 namespace BookDonation.DBQueries
 {
     public class BookDbQueries
     {
-        public static IEnumerable<Action> BookRequestFromInventory(BookDonationDb db)
+        public static IEnumerable<RequestBookVM> BookRequestFromInventory(BookDonationDb db)
         {
             try
             {
@@ -20,22 +21,21 @@ namespace BookDonation.DBQueries
                 var results = (from e in db.Exchange
                                join b in db.Books on e.BookId equals b.Id
                                join a in db.Authors on b.AuthorId equals a.AuthorId
-                               orderby b.Title, b.AuthorId).Select().ToList();
+                               orderby b.Title, b.AuthorId
+                                select new RequestBookVM
+                                //Joining BookInvID in Exchange Table with Books Table and joining AspNetUsers table by Foreign key
+                                // generating a RequestedBookId
+                                {
+                                    ID = b.Id,
+                                    Title = b.Title,
+                                    Author = a.Name,
+                                    //GenreId = b.GenreId,
+                                    //BookId = e.BookId,
+                                    //ActionByUserId = e.ActionByUserId,
 
+                                }).ToList();
 
-                               //select new RequestBookVM
-                               ////Joining BookInvID in Exchange Table with Books Table and joining AspNetUsers table by Foreign key
-                               //// generating a RequestedBookId
-                               //{
-                               //    Title = b.Title,
-                               //    Author = a.Name,
-                               //    //GenreId = b.GenreId,
-                               //    //BookId = e.BookId,
-                               //    //ActionByUserId = e.ActionByUserId,
-
-                               //}).ToList();
-
-                return results;
+                                return results;
             }
 
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace BookDonation.DBQueries
         }
 
 
-        public static IEnumerable<Action> CheckReserveBooksInventory(BookDonationDb db)
+        public static IEnumerable<ReserveBookVM> CheckReserveBooksInventory(BookDonationDb db)
         {
             try
             {
@@ -56,24 +56,24 @@ namespace BookDonation.DBQueries
                               (from b in db.Books
                                join binv in db.Exchange on b.Id equals binv.BookId
                                join a in db.Authors on b.AuthorId equals a.AuthorId
-                               orderby b.Title, b.AuthorId, binv.ActionDate, binv.PickupDeadline).ToList();
-                           //    select new ReserveBookVM
-                           ////Joining BookInvID in Exchange Table with Books Table and
-                           //// generating a Reserved BookId
-                           //{
-                           //        //ID = b.ID,
-                           //        Title = b.Title,
-                           //        Author = a.Name,
-                           //        //QtyAvailable = b.QtyAvailable,
-                           //        //QtyReserved = b.QtyReserved,
-                           //        //GenreId = b.GenreId,
-                           //        //PickupDeadline = binv.PickupDeadline,
-                           //        //ActionDate = binv.ActionDate,
-                           //        //BookInvId = binv.BookInvId,
-                           //        //ActionByUserId = binv.ActionByUserId,
-                           //    }).ToList();
+                               orderby b.Title, b.AuthorId, binv.ActionDate, binv.PickupDeadline
+                               select new ReserveBookVM
+                               //Joining BookInvID in Exchange Table with Books Table and
+                               // generating a Reserved BookId
+                               {
+                                   //ID = b.ID,
+                                   Title = b.Title,
+                                   Author = a.Name,
+                                   //QtyAvailable = b.QtyAvailable,
+                                   //QtyReserved = b.QtyReserved,
+                                   //GenreId = b.GenreId,
+                                   //PickupDeadline = binv.PickupDeadline,
+                                   //ActionDate = binv.ActionDate,
+                                   //BookInvId = binv.BookInvId,
+                                   //ActionByUserId = binv.ActionByUserId,
+                               }).ToList();
 
-                return results;
+                                return results;
             }
             catch (Exception ex)
             {

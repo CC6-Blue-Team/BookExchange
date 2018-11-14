@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    ViewBag.Title = "Donnate a book";
+    ViewBag.Title = "Donate a book";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
@@ -11,10 +11,11 @@
 <div class="title">
 
     <h1>Donate</h1>
+    </div>
     @using (Html.BeginForm("Donate", "Donate", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-</div>
+
 
 <div class="top">
     <div class="instructions">
@@ -28,7 +29,7 @@
 
     <div class="form_donate">
         <form id="reserveForm" action="">
-            Book Title:<br />
+            Title:<br />
             <input type="text" name="BookTitle" value="" />
             <br /><br />
             Author:<br />

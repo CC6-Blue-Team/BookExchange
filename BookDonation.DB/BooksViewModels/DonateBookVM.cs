@@ -10,19 +10,24 @@ namespace BookDonation.DB.BooksViewModels
     public class DonateBookVM
     {
         [Required]
+        public int ID { get; set; }
+
+        [Required]
         [StringLength(50, MinimumLength = 3,
             ErrorMessage = "Title is required")]
         public string Title { get; set; }
-        //[Required] - not required so they can add inventory by only putting in the SKU
+        
         [StringLength(200, MinimumLength = 5,
             ErrorMessage = "Author name is required")]
         public string Author { get; set; }
+
         [Range(0, int.MaxValue,
             ErrorMessage = "ISBN is required")]
         public string ISBN { get; set; }
+
         [Range(0, int.MaxValue,
             ErrorMessage = "Please enter a Quantity value 0 or greater")]
-        public int QtyAvailable { get; set; }
+        public byte QtyAvailable { get; set; }
 
         public IEnumerable<SelectListItem> Genre
         {

@@ -202,10 +202,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BooksViewModels\BookModel.cs" />
-    <Compile Include="BooksViewModels\DonateBookVM.cs" />
-    <Compile Include="BooksViewModels\RequestBookVM.cs" />
-    <Compile Include="BooksViewModels\ReserveBookVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -282,6 +278,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Reserve.cshtml" />
     <Content Include="Views\Home\Donate.cshtml" />
+    <Content Include="Views\Home\DonateCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

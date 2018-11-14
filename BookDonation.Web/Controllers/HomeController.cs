@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-//using BookDonation.DB.BooksViewModels;
+using BookDonation.DB.BooksViewModels;
 using BookDonation.DB;
 using BookDonation.DBQueries;
-
-
-
-
 
 namespace _1.BookDonation.Web.Controllers
 {
@@ -51,24 +47,29 @@ namespace _1.BookDonation.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "ID,Sku,Name,AlertThreshHold,Size,Quantity")] Database.Models.ProductAddVM product)
-        public ActionResult Donate([Bind(Include = "Title,Author,ISBN,Quantity,Genre")] DonateBookVM donateBook)
+        public ActionResult Donate([Bind(Include = "ID,Title,ISBN,Image,QtyAvailable,GenreId,AuthorId")] DonateBookVM donateBook)
         {
             ///*ModelState["ApplicationUser"].Errors.Clear();  /*//Required since ApplicationUser is NOT populated by the user in the view.
 
             if (!ModelState.IsValid)
-                return View(donateBook);
+                return View();
+
             if (donateBook.Title == null)
                 return View(donateBook);
+
             //determine if a Product already exists with the same Title
             bool ProductExists = false;
+
             ViewBag.message = "";
+
             string findTitle = "";
             findTitle = donateBook.Title.Trim().ToUpper();
+
             //Products have to have a unique Sku
             if (findTitle == "N/A" || findTitle == "NA" || findTitle == "N A")
             {
                 ViewBag.message = "Input a Valid BookTitle - don't use N/A or NA or N A";
-                return View(donateBook);
+                return View();
             }
 
             int pID = 0;
@@ -77,19 +78,33 @@ namespace _1.BookDonation.Web.Controllers
             findTitle = donateBook.Title.Trim().ToUpper();
             foreach (var item in results)
             {
-                //    Title = item.Title,
-                Author = item.Name,
-                //    GenreId = item.GenreId,
-                //    BookId = item.BookId
+
                 if (findTitle == item.Title.Trim().ToUpper())
                     ProductExists = true;
                 if (ProductExists)
                 {
-                    pID = item.Id;
+                    pID = item.ID;
                     break;
                 }
-            };
+
+
+                var book = new Books
+                {
+                    Title = donateBook.Title,
+                    ISBN = donateBook.ISBN,
+                    QtyAvailable = donateBook.QtyAvailable,
+                };
+                
+                
+
+                        db.Books.Add(book);
+                db.SaveChanges();
+            }
+      
+            return View();
         }
+    
+
 
         public ActionResult Reserve()
         {
@@ -97,5 +112,6 @@ namespace _1.BookDonation.Web.Controllers
 
             return View();
         }
-    }
+   }
 }
+
