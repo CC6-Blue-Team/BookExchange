@@ -12,7 +12,7 @@ namespace BookDonation.DB
 {
     public class BookDonationDb : DbContext
     {
-        public BookDonationDb() : base("name=BookDonationDb")
+        public BookDonationDb() : base("name=BookDonationDb" )
         {
         }
 
@@ -25,5 +25,21 @@ namespace BookDonation.DB
         public DbSet<Actions> Actions { get; set; }
 
         public DbSet<Authors> Authors { get; set; }
+
+        public static BookDonationDb Donate()
+        {
+            return new BookDonationDb();
+        }
+
+        public static BookDonationDb Reserve()
+        {
+            return new BookDonationDb();
+        }
+
+        public static BookDonationDb Request()
+        {
+            return new BookDonationDb();
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookDonation.Web.BooksViewModels;
 using BookDonation.DB;
+using BookDonation.DBQueries;
 
 
 namespace _1.BookDonation.Web.Controllers
@@ -32,32 +33,55 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-        // GET: Movies/Create
+
+        // GET: Books/donate
         public ActionResult Donate()
         {
-            ViewBag.Message = new SelectList(db.Books, "ID", "Title", "ISBN", "Image", "QtyAvailable", "GenreId", "AuthorId");
-            return View();
+            var pm = new DonateBookVM();
+            return View(pm);
         }
 
-        // POST: Movies/Create
+
+        // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,ISBN,Image,QtyAvailable,GenreId,AuthorId")] Books books)
+        //public ActionResult Create([Bind(Include = "ID,Sku,Name,AlertThreshHold,Size,Quantity")] Database.Models.ProductAddVM product)
+        public ActionResult Create([Bind(Include = "Author,BookTitle,ISBN,Genre,Quantity")] DonateBookVM donateBook)
         {
-            if (ModelState.IsValid)
+            ///*ModelState["ApplicationUser"].Errors.Clear();  /*//Required since ApplicationUser is NOT populated by the user in the view.
+
+            if (!ModelState.IsValid)
+                return View(donateBook);
+            if (donateBook.Title == null)
+                return View(donateBook);
+            //determine if a Product already exists with the same Title
+            bool ProductExists = false;
+            ViewBag.message = "";
+            string findTitle = "";
+            findTitle = donateBook.Title.Trim().ToUpper();
+            //Products have to have a unique Sku
+            if (findTitle == "N/A" || findTitle == "NA" || findTitle == "N A")
             {
-                db.Books.Add(books);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.message = "Input a Valid BookTitle - don't use N/A or NA or N A";
+                return View(donateBook);
             }
 
-            ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name", books.GenreId);
-            return View(books);
+            int pID = 0;
+            var results =BookDbQueries.GetAllGiftShopInventory();
+            findTitle = donateBook.Title.Trim().ToUpper();
+            foreach (var item in results)
+            {
+                if (findTitle == item.Title.Trim().ToUpper())
+                    ProductExists = true;
+                if (ProductExists)
+                {
+                    pID = item.ID;
+                    break;
+                }
+            };
         }
-
-
 
         public ActionResult Reserve()
         {
