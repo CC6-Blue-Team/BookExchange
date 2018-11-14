@@ -36,11 +36,12 @@ namespace _1.BookDonation.Web.Controllers
         // GET: Books/Cart/
         public ActionResult DonateCart(int? id)
         {
+            Books myBooks = db.Books.Find(id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books myBooks = db.Books.Find(id);
+            
 
 
             if (myBooks == null)
@@ -54,6 +55,7 @@ namespace _1.BookDonation.Web.Controllers
 
             donateCart.Title = myBooks.Title;
             donateCart.ISBN = myBooks.ISBN;
+            donateCart.QtyAvailable = myBooks.QtyAvailable;
             //donateCart.QtyAvailable = ct.GetTax(donateCart.Price);
             //donateCart.Total = myCart.Price + (ct.GetTax(donateCart.Price));
 
@@ -67,11 +69,14 @@ namespace _1.BookDonation.Web.Controllers
         // GET: Books/Donate
         public ActionResult Donate()
         {
-            var books = new Books();
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Genre");
+            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name");
+            ////DonateBookVM donateCart = new DonateBookVM();
+            //var books = new Books();
             return View();
         }
 
-        // POST: Books/Create
+        // POST: Books/Donate
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -82,11 +87,11 @@ namespace _1.BookDonation.Web.Controllers
             {
                 db.Books.Add(books);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DonateCart");
             }
 
             //ViewBag.GenreId = new SelectList(db.Genre, "Id", "Type", books.Genre);
-            return View();
+            return View(books);
         }
 
 

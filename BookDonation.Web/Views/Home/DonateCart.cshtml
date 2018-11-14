@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookDonation.DB.BooksViewModels.DonateBookVM>
+﻿@model IEnumerable<BookDonation.DB.Books>
 
 
 @{
@@ -8,7 +8,7 @@
 <h2>Donation Cart</h2>
 
 <p>
-    @Html.ActionLink("Print Receipt", "Print")
+    @*@Html.ActionLink("Print Receipt", "Print")*@
     <br />
     <h4>Donated Books</h4>
     <hr />
@@ -16,9 +16,9 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
