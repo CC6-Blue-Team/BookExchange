@@ -130,5 +130,15 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookDonation.DB\BookDonation.DB.csproj">
+      <Project>{add0f74a-6ba4-4334-941e-42fe65715ca1}</Project>
+      <Name>BookDonation.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookDonation.Web\BookDonation.Web.csproj">
+      <Project>{0980df50-2561-48da-ba1d-39ad2e110249}</Project>
+      <Name>BookDonation.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
