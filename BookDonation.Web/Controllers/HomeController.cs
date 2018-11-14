@@ -16,7 +16,7 @@ namespace _1.BookDonation.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "BookBank6 is a book exchange website.";
+            ViewBag.Message = "";
 
             return View();
         }
@@ -42,7 +42,7 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-        public ActionResult RequestBook()
+        public ActionResult Request()
         {
             ViewBag.Message = "";
 

@@ -4,6 +4,11 @@
     
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -27,12 +32,6 @@ textarea {
 }
 
 /*Class*/
-.designBox {
-    margin:auto;
-    background-color: white;
-    background-image: url("..\images\book2_img.png");
-    width: 50%; 
-}
 
 .title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
