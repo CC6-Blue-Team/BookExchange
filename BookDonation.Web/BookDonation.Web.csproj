@@ -220,7 +220,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\book2_img.png" />
     <Content Include="images\book3_img.jpg" />
+    <Content Include="images\bookbank6_logo.png" />
+    <Content Include="images\bookpainting.jpg" />
     <Content Include="images\bookreading_img.jpg" />
+    <Content Include="images\searchbooks.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

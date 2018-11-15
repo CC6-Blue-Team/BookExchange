@@ -7,6 +7,7 @@
 img {
     width: 100%;
     height: auto;
+    padding-bottom: 5px;
 }
 
 
@@ -32,6 +33,11 @@ textarea {
 }
 
 /*Class*/
+
+.toggle, img {
+    max-width: 100%;
+    height: auto;
+}
 
 .title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -72,6 +78,13 @@ textarea {
 }
 
 /*ID*/
+
+#logo {
+    max-width:45%;
+    height: auto;
+
+}
+
 #reserveForm {
     width: 90%;
 }

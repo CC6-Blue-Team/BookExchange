@@ -2,7 +2,11 @@
     ViewBag.Title = "";
 }
 
-<img src="..\images\bookreading_img.jpg" />
+
+<div id="toggle">
+    <button id="btn">Toggle</button>
+    <img src="..\images\bookreading_img.jpg" />
+</div>
 <div class="jumbotron">
     <h1>BookBank6</h1>
     <p class="lead">BookBank6 is a book exchange web site. Feel free to Donate, Reserve, or Request a book that is not listed. Thanks</p>
@@ -35,3 +39,12 @@
         <p><a class="btn btn-default" href="../home/contact">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            $("#toggle").hide();
+        });
+    });
+</script>
