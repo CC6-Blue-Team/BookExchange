@@ -1,4 +1,6 @@
-﻿@model BookDonation.Web.BooksViewModels.ReserveBookVM
+﻿@model BookDonation.DB.BooksViewModels.ReserveBookVM
+
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,33 +23,39 @@
 
 <div class="instructions">
     <div class="ptext">
-        <ol>
+       
             1. Enter Book Title, Author, and desired Pick Up Day for Book.
-
+        <br />
             2. Submit Reserve request.
-        </ol>
+        
     </div>
 </div>
 
 @using (Html.BeginForm())
 {
-    <fieldset>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Title)
-        </div>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Author)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Author)
-        </div>
-        <br /><br />
-        <input id="Reserve" type="submit" value="submit" />
-        <input id="Cancel" type="reset" value="reset" />
-    </fieldset>
+<fieldset>
+    <div class="formHeader">
+        @Html.ActionLink("Title", "Reserve", new { sortOrder = ViewBag.TitleSortParam })
+
+        @Html.ActionLink("Pickup Deadline", "Reserve", new { sortOrder = ViewBag.PickupDeadlineSortParm })
+    </div>
+
+    <div class="title-label">
+        @Html.LabelFor(model => model.Title)
+    </div>
+    <div class="title-field">
+        @Html.TextBoxFor(model => model.Title)
+    </div>
+    <div class="title-label">
+        @Html.LabelFor(model => model.Author)
+    </div>
+    <div class="title-field">
+        @Html.TextBoxFor(model => model.Author)
+    </div>
+    <br /><br />
+    <input id="Reserve" type="submit" value="submit" />
+    <input id="Cancel" type="reset" value="reset" />
+</fieldset>
 }
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>

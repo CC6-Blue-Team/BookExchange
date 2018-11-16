@@ -54,7 +54,6 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -89,6 +88,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -226,9 +226,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\book-donations.png" />
     <Content Include="images\book2_img.png" />
     <Content Include="images\book3_img.jpg" />
+    <Content Include="images\bookbank6_logo.png" />
+    <Content Include="images\bookpainting.jpg" />
     <Content Include="images\bookreading_img.jpg" />
+    <Content Include="images\searchbooks.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -281,6 +285,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Reserve.cshtml" />
     <Content Include="Views\Home\Donate.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Home\Request.cshtml" />
+=======
+    <Content Include="Views\Home\DonateCart.cshtml" />
     <Content Include="Views\Genres\Create.cshtml" />
     <Content Include="Views\Genres\Delete.cshtml" />
     <Content Include="Views\Genres\Details.cshtml" />
@@ -296,7 +304,7 @@
     <Content Include="Views\Actions\Details.cshtml" />
     <Content Include="Views\Actions\Edit.cshtml" />
     <Content Include="Views\Actions\Index.cshtml" />
-    <Content Include="Views\Home\Request.cshtml" />
+>>>>>>> 42cd2fc5092323635e4b21b387d3d18c37088813
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
