@@ -33,38 +33,38 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-        // GET: Books/Cart/
-        public ActionResult DonateCart(int? id)
-        {
-            Books myBooks = db.Books.Find(id);
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //// GET: Books/Cart/
+        //public ActionResult DonateCart(int? id)
+        //{
+        //    Books myBooks = db.Books.Find(id);
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
             
 
 
-            if (myBooks == null)
-            {
-                return HttpNotFound();
-            }
+        //    if (myBooks == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            //ViewBag.tax = movies.Price * 0.08;
-            //CalcTax ct = new CalcTax();
-            DonateBookVM donateCart = new DonateBookVM();
+        //    //ViewBag.tax = movies.Price * 0.08;
+        //    //CalcTax ct = new CalcTax();
+        //    DonateBookVM donateCart = new DonateBookVM();
 
-            donateCart.Title = myBooks.Title;
-            donateCart.ISBN = myBooks.ISBN;
-            donateCart.QtyAvailable = myBooks.QtyAvailable;
-            //donateCart.QtyAvailable = ct.GetTax(donateCart.Price);
-            //donateCart.Total = myCart.Price + (ct.GetTax(donateCart.Price));
+        //    donateCart.Title = myBooks.Title;
+        //    donateCart.ISBN = myBooks.ISBN;
+        //    donateCart.QtyAvailable = myBooks.QtyAvailable;
+        //    //donateCart.QtyAvailable = ct.GetTax(donateCart.Price);
+        //    //donateCart.Total = myCart.Price + (ct.GetTax(donateCart.Price));
 
-            //ViewBag.Total = myCart.Total;
-            //ViewBag.Tax = myCart.Tax;
+        //    //ViewBag.Total = myCart.Total;
+        //    //ViewBag.Tax = myCart.Tax;
 
-            return View(donateCart);
+        //    return View(donateCart);
 
-        }
+        //}
 
         // GET: Books/Donate
         public ActionResult Donate()
@@ -87,7 +87,7 @@ namespace _1.BookDonation.Web.Controllers
             {
                 db.Books.Add(books);
                 db.SaveChanges();
-                return RedirectToAction("DonateCart");
+                return RedirectToAction("Index");
             }
 
             //ViewBag.GenreId = new SelectList(db.Genre, "Id", "Type", books.Genre);
@@ -169,11 +169,43 @@ namespace _1.BookDonation.Web.Controllers
 
 
 
-        public ActionResult Reserve()
+        public ActionResult Reserve(string sortOrder)
         {
-            ViewBag.Message = "";
+            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PickupDeadlineSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            return View();
+            //from e in db.Exchange
+            //join b in db.Books on e.BookId equals b.Id
+            //join a in db.Authors on b.AuthorId equals a.AuthorId
+            //orderby b.Title, b.AuthorId
+            //select new RequestBookVM
+
+            var myBooks = from b in db.Books
+                          join ex in db.Exchange on b.Id equals ex.BookId
+                          select new
+                          {
+                              Title = b.Title,
+                              PickupDeadline = ex.PickupDeadline
+                          };
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    myBooks = myBooks.OrderByDescending(b => b.Title);
+                    break;
+
+                case "Date":
+                    myBooks = myBooks.OrderBy(ex => ex.PickupDeadline);
+                    break;
+
+                case "date_desc":
+                    myBooks = myBooks.OrderByDescending(ex => ex.PickupDeadline);
+                    break;
+                default:
+                    myBooks = myBooks.OrderBy(b => b.Title);
+                    break;
+            }
+            return View(myBooks.ToList());
         }
    }
 }
