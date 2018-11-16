@@ -26,6 +26,15 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
+
+
+        // GET: DonateBook/DonateCart/
+        public ActionResult DonateReceipt()
+        {
+           
+            return View();
+
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "";
@@ -33,47 +42,15 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-        //// GET: Books/Cart/
-        //public ActionResult DonateCart(int? id)
-        //{
-        //    Books myBooks = db.Books.Find(id);
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-            
-
-
-        //    if (myBooks == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    //ViewBag.tax = movies.Price * 0.08;
-        //    //CalcTax ct = new CalcTax();
-        //    DonateBookVM donateCart = new DonateBookVM();
-
-        //    donateCart.Title = myBooks.Title;
-        //    donateCart.ISBN = myBooks.ISBN;
-        //    donateCart.QtyAvailable = myBooks.QtyAvailable;
-        //    //donateCart.QtyAvailable = ct.GetTax(donateCart.Price);
-        //    //donateCart.Total = myCart.Price + (ct.GetTax(donateCart.Price));
-
-        //    //ViewBag.Total = myCart.Total;
-        //    //ViewBag.Tax = myCart.Tax;
-
-        //    return View(donateCart);
-
-        //}
-
+      
         // GET: Books/Donate
         public ActionResult Donate()
         {
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Genre");
             ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name");
             ////DonateBookVM donateCart = new DonateBookVM();
-            //var books = new Books();
-            return View();
+            var books = new Books();
+            return View(books);
         }
 
         // POST: Books/Donate
@@ -91,7 +68,7 @@ namespace _1.BookDonation.Web.Controllers
             }
 
             //ViewBag.GenreId = new SelectList(db.Genre, "Id", "Type", books.Genre);
-            return View(books);
+            return View();
         }
 
 
