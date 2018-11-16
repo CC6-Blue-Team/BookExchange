@@ -1,0 +1,46 @@
+﻿@model BookDonation.DB.Books
+
+
+@{
+    ViewBag.Title = "Your Donation receipt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <h2>Thanks for your donation!</h2>
+    <h5>The book information are:</h5>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.authors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.authors)
+        </dd>
+
+    </dl>
+</div>
+<button onclick="PrintFunction()" id="btn" class="btn">Print receipt</button>
+<script>
+    function PrintFunction() {
+        window.print();
+    }
+</script>
