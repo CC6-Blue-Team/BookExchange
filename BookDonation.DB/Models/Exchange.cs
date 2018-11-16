@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using System.Data.Entity;
+using System.Data;
 
 namespace BookDonation.DB
 {
@@ -15,5 +15,6 @@ namespace BookDonation.DB
         public virtual DateTime ActionDate { get; set; }
         public virtual int BookId { get; set; }
         public virtual int ActionByUserId { get; set; }
+        public virtual int ActionID { get; set; }
     }
 }
