@@ -8,9 +8,6 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="logo">
-        <img src="~/images/bookbank6_logo.png" />
-    </div>
     
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -37,6 +34,9 @@
         </div>
     </div>
     <div class="container body-content">
+        <div class="divlogo">
+            <img src="~/images/bookbank6_logo.png" id="logo" />
+        </div>
 
         @RenderBody()
         <hr />

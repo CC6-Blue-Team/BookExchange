@@ -10,6 +10,10 @@ img {
     padding-bottom: 5px;
 }
 
+p {
+    border: solid thin #898989;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -34,6 +38,10 @@ textarea {
 
 /*Class*/
 
+.divlogo {
+
+}
+
 .toggle, img {
     max-width: 100%;
     height: auto;
@@ -42,6 +50,8 @@ textarea {
 .title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #5ebb47;
+    float: right;
+    clear:left;
 }
 
 .top {
@@ -80,7 +90,7 @@ textarea {
 /*ID*/
 
 #logo {
-    max-width:45%;
+    max-width:30%;
     height: auto;
 
 }

@@ -99,6 +99,8 @@ hr {
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
+
+
 pre {
   overflow: auto;
 }
@@ -3989,7 +3991,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #5ebb47;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4494,8 +4496,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+    background-color: #603913;
+    border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4538,10 +4540,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #e7e7e7;
-}
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        border-color: #603913;
+    }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
@@ -4590,8 +4592,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+    background-color: #603913;
+    border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;

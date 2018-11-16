@@ -11,20 +11,25 @@
 <div class="title">
     <h1>Donate</h1>
 </div>
-<img src="..\images\bookreading_img.jpg" />
-<div class="top">
-    <div class="instructions">
-        <div class="ptext">
-            <ol>
-                Complete form to donate books.
-                Be sure to include how many books you would like to donate. 
 
-            </ol>
-        </div>
+<div class="buttons">
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <img src="~/images/book-donations.png" id="toggle" />
+</div>
+
+<div class="instructions">
+    <div class="ptext">
+        <ol>
+            Complete form to donate books.
+            Be sure to include how many books you would like to donate.
+
+        </ol>
     </div>
+</div>
 
-    @using (Html.BeginForm())
-    {
+@using (Html.BeginForm())
+{
     <fieldset>
         <div class="title-label">
             @Html.LabelFor(model => model.Title)
@@ -60,15 +65,24 @@
         </div>
 
         @*<div class="title-field">
-            @Html.
-        </div>*@
+                @Html.
+            </div>*@
         <br /><br />
         <input id="Reserve" type="submit" value="submit" />
         <input id="Cancel" type="reset" value="reset" />
     </fieldset>
-    }
-</div>
+}
 
 
-
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $("#toggle").slideToggle();
+        });
+        $("#show").click(function () {
+            $("#toggle").slideToggle();
+        });
+    });
+</script>
 

@@ -13,7 +13,12 @@
     <h1>Request</h1>
 </div>
 
-<img src="..\images\bookreading_img.jpg" />
+<div class="buttons">
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <img src="~/images/searchbooks.png" id="toggle"/>
+</div>
+
 <div class="instructions">
     <div class="ptext">
         <ol>
@@ -45,7 +50,17 @@
     </fieldset>
 }
 
-
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $("#toggle").slideToggle();
+        });
+        $("#show").click(function () {
+            $("#toggle").slideToggle();
+        });
+    });
+</script>
 
 
 

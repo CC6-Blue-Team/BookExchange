@@ -8,7 +8,14 @@
     <h1>Contact</h1>
 </div>
 
-<img src="..\images\bookreading_img.jpg" />
+<div class="buttons">
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+        <img src="..\images\bookreading_img.jpg" id="toggle"/>
+</div>
+
+    
+
 <div class="top">
     <div class="ptext">
         Feel Free to Contact Us anytime
@@ -28,3 +35,15 @@
     <strong>Support:</strong>   <a href="mailto:Support@bookbank6.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@bookbank6.com">Marketing@example.com</a>
 </address>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $("#toggle").slideToggle();
+        });
+        $("#show").click(function () {
+            $("#toggle").slideToggle();
+        });
+    });
+</script>

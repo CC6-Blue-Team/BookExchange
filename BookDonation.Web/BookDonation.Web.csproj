@@ -218,6 +218,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\book-donations.png" />
     <Content Include="images\book2_img.png" />
     <Content Include="images\book3_img.jpg" />
     <Content Include="images\bookbank6_logo.png" />
