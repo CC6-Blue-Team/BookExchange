@@ -1,4 +1,5 @@
 ﻿@model BookDonation.DB.BooksViewModels.RequestBookVM
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,38 +17,36 @@
 <div class="buttons">
     <button id="hide">Hide</button>
     <button id="show">Show</button>
-    <img src="~/images/searchbooks.png" id="toggle"/>
+    <img src="~/images/searchbooks.png" id="toggle" />
 </div>
 
 <div class="instructions">
     <div class="ptext">
-        <ol>
-            1. Enter Book Title and Author.
-
-            2. Submit request.
-        </ol>
+        1. Enter Book Title and Author.
+        <br />
+        2. Submit request.
     </div>
 </div>
 
 @using (Html.BeginForm())
 {
-    <fieldset>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Title)
-        </div>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Author)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Author)
-        </div>
-        <br /><br />
-        <input id="Reserve" type="submit" value="submit" />
-        <input id="Cancel" type="reset" value="reset" />
-    </fieldset>
+<fieldset>
+    <div class="title-label">
+        @Html.LabelFor(model => model.Title)
+    </div>
+    <div class="title-field">
+        @Html.TextBoxFor(model => model.Title)
+    </div>
+    <div class="title-label">
+        @Html.LabelFor(model => model.Author)
+    </div>
+    <div class="title-field">
+        @Html.TextBoxFor(model => model.Author)
+    </div>
+    <br /><br />
+    <input id="Reserve" type="submit" value="submit" />
+    <input id="Cancel" type="reset" value="reset" />
+</fieldset>
 }
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>

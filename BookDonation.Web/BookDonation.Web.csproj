@@ -298,6 +298,7 @@
     <Content Include="Views\Actions\Edit.cshtml" />
     <Content Include="Views\Actions\Index.cshtml" />
     <Content Include="Views\Home\DonateReceipt.cshtml" />
+    <Content Include="Views\Home\Request.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
