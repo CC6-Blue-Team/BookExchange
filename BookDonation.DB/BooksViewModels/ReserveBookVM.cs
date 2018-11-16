@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookDonation.Web.BooksViewModels
+namespace BookDonation.DB.BooksViewModels
 {
     public class ReserveBookVM
     {

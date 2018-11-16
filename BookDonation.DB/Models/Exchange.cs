@@ -15,6 +15,5 @@ namespace BookDonation.DB
         public virtual DateTime ActionDate { get; set; }
         public virtual int BookId { get; set; }
         public virtual int ActionByUserId { get; set; }
-        public virtual int ActionId { get; set; }
     }
 }

@@ -5,24 +5,30 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookDonation.Web.BooksViewModels
+namespace BookDonation.DB.BooksViewModels
 {
     public class DonateBookVM
     {
         [Required]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Title is required")]
-        public string Title { get; set; }
+        public int ID { get; set; }
 
-        //[Required] - not required so they can add inventory by only putting in the SKU
-        [StringLength(200, MinimumLength = 5, ErrorMessage = "Author name is required")]
+        [Required]
+        [StringLength(50, MinimumLength = 3,
+            ErrorMessage = "Title is required")]
+        public string Title { get; set; }
+        
+
+        [StringLength(200, MinimumLength = 5,
+            ErrorMessage = "Author name is required")]
         public string Author { get; set; }
 
-        [Range(0, int.MaxValue, ErrorMessage = "ISBN is required")]
+        [Range(0, int.MaxValue,
+            ErrorMessage = "ISBN is required")]
         public string ISBN { get; set; }
 
-        [Range(0, int.MaxValue,
-            ErrorMessage = "Please enter a Quantity value 0 or greater")]
-        public int QtyAvailable { get; set; }
+        [Range(1, int.MaxValue,
+            ErrorMessage = "Please enter a Quantity value 1 or greater")]
+        public byte QtyAvailable { get; set; }
 
         public IEnumerable<SelectListItem> Genre
         {
@@ -33,10 +39,9 @@ namespace BookDonation.Web.BooksViewModels
                      new SelectListItem { Value = "", Text = "" },
                      new SelectListItem { Value = "Fiction", Text = "Fiction" },
                      new SelectListItem { Value = "Non-Fiction", Text = "Non-Fiction" },
-                     new SelectListItem { Value = "Children", Text = "Children" }
-                }.ToList();
+                     new SelectListItem { Value = "Children", Text = "Children" },
+                };
             }
         }
-
     }
 }

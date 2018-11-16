@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BookDonation.DB.Books>
+
+
+@{
+    ViewBag.Title = "Donation Cart";
+}
+
+<h2>Donation Cart</h2>
+
+<p>
+    @*@Html.ActionLink("Print Receipt", "Print")*@
+    <br />
+    <h4>Donated Books</h4>
+    <hr />
+</p>
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.QtyAvailable)
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.ID)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Author.)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.QtyAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Genre)
+        </td>
+
+
+    </tr>
+
+}
+
+</table>
+
+
+@*<div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QtyAvailable)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.QtyAvailable)
+            </dd>
+
+        </dl>
+    </div>*@
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
