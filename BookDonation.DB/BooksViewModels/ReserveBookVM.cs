@@ -15,5 +15,7 @@ namespace BookDonation.DB.BooksViewModels
         
         [StringLength(200, MinimumLength = 5, ErrorMessage = "Author name is required")]
         public string Author { get; set; }
+
+
     }
 }

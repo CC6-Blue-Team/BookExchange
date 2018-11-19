@@ -29,6 +29,8 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
+
+
         public ActionResult Contact()
         {
             ViewBag.Message = "";
@@ -36,7 +38,7 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-
+ 
         // GET: Books/Donate
         public ActionResult Donate()
         {
@@ -93,9 +95,14 @@ namespace _1.BookDonation.Web.Controllers
             return View(reserveListedVM);
         }
 
+        [HttpGet]
+        public ActionResult ReserveReceipt()
+        {
+            return View();
+        }
 
 
 
-   }
+    }
 }
 
