@@ -1,5 +1,4 @@
-﻿@model BookDonation.DB.BooksViewModels.RequestBookVM
-
+﻿@model BookDonation.DB.Books
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -38,12 +37,12 @@
     <div class="title-field">
         @Html.TextBoxFor(model => model.Title)
     </div>
-    <div class="title-label">
+    @*<div class="title-label">
         @Html.LabelFor(model => model.Author)
     </div>
     <div class="title-field">
         @Html.TextBoxFor(model => model.Author)
-    </div>
+    </div>*@
     <br /><br />
     <input id="Reserve" type="submit" value="submit" />
     <input id="Cancel" type="reset" value="reset" />

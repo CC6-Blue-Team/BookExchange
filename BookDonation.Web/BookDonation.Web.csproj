@@ -299,6 +299,7 @@
     <Content Include="Views\Actions\Index.cshtml" />
     <Content Include="Views\Home\DonateReceipt.cshtml" />
     <Content Include="Views\Home\ReserveReceipt.cshtml" />
+    <Content Include="Views\Home\Request.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
