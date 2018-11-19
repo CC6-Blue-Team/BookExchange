@@ -59,7 +59,19 @@ namespace _1.BookDonation.Web.Controllers
             {
                 db.Books.Add(books);
                 db.SaveChanges();
-                return RedirectToAction("DonateReceipt");
+                //return RedirectToAction("DonateReceipt");  //Original approach
+
+                ////alt method #1
+                return View("DonateReceipt", books);
+
+                ////alt method #2
+                //ViewBag.Title = books.Title;
+                //ViewBag.ISBN = books.ISBN;
+                //return View("DonateReceipt");
+
+                //ViewBag.DonatedBook = books;
+                //return View("DonateReceipt");
+
             }
 
             return View(books);
