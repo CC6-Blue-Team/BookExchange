@@ -7,6 +7,7 @@ using BookDonation.DB.BooksViewModels;
 using BookDonation.DB;
 using BookDonation.DBQueries;
 using System.Net;
+using System.Data.Entity;
 
 namespace _1.BookDonation.Web.Controllers
 {
@@ -29,8 +30,6 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-
-
         public ActionResult Contact()
         {
             ViewBag.Message = "";
@@ -38,7 +37,7 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
- 
+
         // GET: Books/Donate
         public ActionResult Donate()
         {
@@ -55,24 +54,26 @@ namespace _1.BookDonation.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Donate([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
         {
-           
+
             if (ModelState.IsValid)
             {
-                bool bookExists = db.Books.Any(b => b.ISBN.Equals(books.ISBN));
+                var rec = db.Books.Where(b => b.ISBN == books.ISBN).FirstOrDefault();
 
-                if (bookExists)
+                if (rec != null)  //book exists
                 {
-                    return View(books);
+                    rec.QtyAvailable -= books.QtyAvailable;
+                    db.Entry(rec).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
                 else
                 {
                     db.Books.Add(books);
                     db.SaveChanges();
 
-                    //return RedirectToAction("DonateReceipt");  //Original approach
+                    return RedirectToAction("DonateReceipt");  //Original approach
 
                     ////alt method #1
-                    return View("DonateReceipt", books);
+                    //return View("DonateReceipt", books);
 
                     ////alt method #2
                     //ViewBag.Title = books.Title;
@@ -84,7 +85,7 @@ namespace _1.BookDonation.Web.Controllers
                 }
             }
 
-            return View(books);
+            return View("DonateReceipt", books);
         }
 
         [HttpGet]
@@ -93,7 +94,8 @@ namespace _1.BookDonation.Web.Controllers
             return View();
         }
 
-            [HttpGet]
+
+        [HttpGet]
         public ActionResult Reserve()
         {
             var reserveListVM = new ReserveListVM();
@@ -111,10 +113,52 @@ namespace _1.BookDonation.Web.Controllers
                 Title = item.Title,
                 Image = item.Image,
                 ISBN = item.ISBN,
+                QtyAvailable = bks.QtyAvailable,
                 Author = item.authors.Name
             }).ToList();
 
             return View(reserveListedVM);
+        }
+
+        // POST: Books/Reserve
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reserve([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var rec = db.Books.Where(b => b.ISBN == books.ISBN).FirstOrDefault();
+
+                if (rec != null)  //book exists
+                {
+                    rec.QtyAvailable -= books.QtyAvailable;
+                    db.Entry(rec).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //db.Books.Add(books);
+                    //db.SaveChanges();
+
+                    //return RedirectToAction("DonateReceipt");  //Original approach
+
+                    ////alt method #1
+                    return View("ReserveReceipt", books);
+
+                    ////alt method #2
+                    //ViewBag.Title = books.Title;
+                    //ViewBag.ISBN = books.ISBN;
+                    //return View("DonateReceipt");
+
+                    //ViewBag.DonatedBook = books;
+                    //return View("DonateReceipt");
+                }
+            }
+
+            return View("ReserveReceipt", books);
         }
 
         [HttpGet]
@@ -122,9 +166,10 @@ namespace _1.BookDonation.Web.Controllers
         {
             return View();
         }
-
-
-
     }
+
+
 }
+
+
 

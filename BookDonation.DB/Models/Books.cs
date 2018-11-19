@@ -16,6 +16,8 @@ namespace BookDonation.DB
         public virtual string Title { get; set; }
         public virtual string ISBN { get; set; }
         public virtual byte[] Image { get; set; }
+
+        public Books() { QtyAvailable = 1; }
         public virtual byte QtyAvailable { get; set; }
        // public virtual byte QtyReserved { get; set; }
         public virtual int GenreId { get; set; }
