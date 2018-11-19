@@ -32,10 +32,12 @@ namespace BookDonation.DB.Migrations
                 new Genres() { GenreId = 5, Genre = "Non-Fiction"},
                 new Genres() { GenreId = 6, Genre = "Children"}
             );
+
+
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+                //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+                //  to avoid creating duplicate seed data.
         }
     }
 }
