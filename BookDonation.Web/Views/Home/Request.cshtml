@@ -1,7 +1,4 @@
 ﻿@model BookDonation.DB.Books
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 @{
     ViewBag.Title = "";
@@ -37,12 +34,7 @@
     <div class="title-field">
         @Html.TextBoxFor(model => model.Title)
     </div>
-    @*<div class="title-label">
-        @Html.LabelFor(model => model.Author)
-    </div>
-    <div class="title-field">
-        @Html.TextBoxFor(model => model.Author)
-    </div>*@
+    
     <br /><br />
     <input id="Reserve" type="submit" value="submit" />
     <input id="Cancel" type="reset" value="reset" />
