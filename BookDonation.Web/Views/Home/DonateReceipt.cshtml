@@ -37,7 +37,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.authors)
+            @ViewBag.AuthorName
         </dd>
 
         <br />
@@ -57,18 +57,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.genres)
+            @ViewBag.GenreName
         </dd>
 
         <br />
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
     </dl>
 </div>
 <button onclick="PrintFunction()" id="btn" class="btn">Print receipt</button>

@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace BookDonation.DB.BooksViewModels
 {
-    public class BookInventoryModel
+    public class BookModel
     {
         //from booksmodel
         public virtual int Id { get; set; }
@@ -30,37 +30,5 @@ namespace BookDonation.DB.BooksViewModels
         public virtual int BookId { get; set; }
         public virtual int ActionByUserId { get; set; }
         public virtual int ActionId { get; set; }
-        //from action
-
-
-
-    }
-       
-public class UpdateBookInventory
-    {
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        public int ID { get; set; }
-        public int BookId { get; set; }
-        public bool IsDeleted { get; set; }
-    }
-    public class BookModel
-    {
-        public List<BookModel> BInventoryList { get; set; }
-
-        //sizes for Create View dropdown list
-        public IEnumerable<SelectListItem> Genre
-        {
-            get
-            {
-                return new[]
-                {
-                     new SelectListItem { Value = "Fiction", Text = "Fiction" },
-                     new SelectListItem { Value = "Non-Fiction", Text = "Non-Fiction" },
-                     new SelectListItem { Value = "Children", Text = "Children" },
-                     
-                 };
-            }
-        }
     }
 }

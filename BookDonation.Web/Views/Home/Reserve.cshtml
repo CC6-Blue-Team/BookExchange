@@ -28,7 +28,7 @@
 </div>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Reserve", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <fieldset>
         <table>
@@ -56,31 +56,34 @@
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td></td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Author)
-                    </td>
-                    <td></td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ISBN)
-                    </td>
-                    <td></td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QtyAvailable)
-                    </td>
-                    <td></td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Image)
-                    </td>
-                    <td></td>
-                    <td>
-                        @Html.ActionLink("Reserve", "ReserveReceipt", new { isbn = item.ISBN })
-                    </td>
-                </tr>
+                if (item.QtyAvailable != 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ISBN)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QtyAvailable)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.ActionLink("Reserve", "ReserveReceipt", new { isbn = item.ISBN })
+                        </td>
+                    </tr>
+                }
             }
         </table>
 

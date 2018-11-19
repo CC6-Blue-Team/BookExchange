@@ -63,27 +63,17 @@ namespace _1.BookDonation.Web.Controllers
                 {
                     rec.QtyAvailable -= books.QtyAvailable;
                     db.Entry(rec).State = EntityState.Modified;
-                    db.SaveChanges();
                 }
                 else
                 {
                     db.Books.Add(books);
-                    db.SaveChanges();
-
-                    return RedirectToAction("DonateReceipt");  //Original approach
-
-                    ////alt method #1
-                    //return View("DonateReceipt", books);
-
-                    ////alt method #2
-                    //ViewBag.Title = books.Title;
-                    //ViewBag.ISBN = books.ISBN;
-                    //return View("DonateReceipt");
-
-                    //ViewBag.DonatedBook = books;
-                    //return View("DonateReceipt");
                 }
             }
+
+            db.SaveChanges();
+
+            ViewBag.AuthorName = db.Authors.Find(books.AuthorId).Name;
+            ViewBag.GenreName = db.Genres.Find(books.GenreId).Genre;
 
             return View("DonateReceipt", books);
         }
@@ -108,16 +98,18 @@ namespace _1.BookDonation.Web.Controllers
                 bks.Image
             });
 
-            List<ReserveListVM> reserveListedVM = content.Select(item => new ReserveListVM()
-            {
-                Title = item.Title,
-                Image = item.Image,
-                ISBN = item.ISBN,
-                QtyAvailable = bks.QtyAvailable,
-                Author = item.authors.Name
-            }).ToList();
 
-            return View(reserveListedVM);
+                List<ReserveListVM> reserveListedVM = content.Select(item => new ReserveListVM()
+                {
+                    Title = item.Title,
+                    Image = item.Image,
+                    ISBN = item.ISBN,
+                    QtyAvailable = item.QtyAvailable,
+                    Author = item.authors.Name
+                }).ToList();
+                return View(reserveListedVM);
+            
+
         }
 
         // POST: Books/Reserve
@@ -127,44 +119,45 @@ namespace _1.BookDonation.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Reserve([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    var rec = db.Books.Where(b => b.ISBN == books.ISBN).FirstOrDefault();
 
-            if (ModelState.IsValid)
-            {
-                var rec = db.Books.Where(b => b.ISBN == books.ISBN).FirstOrDefault();
+            //    if (rec != null)  //book exists
+            //    {
+            //        rec.QtyAvailable -= books.QtyAvailable;
+            //        db.Entry(rec).State = EntityState.Modified;
+            //        db.SaveChanges();
+            //    }
+            //    else
+            //    {
 
-                if (rec != null)  //book exists
-                {
-                    rec.QtyAvailable -= books.QtyAvailable;
-                    db.Entry(rec).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //db.Books.Add(books);
-                    //db.SaveChanges();
+            //        return View("ReserveReceipt", books);
 
-                    //return RedirectToAction("DonateReceipt");  //Original approach
-
-                    ////alt method #1
-                    return View("ReserveReceipt", books);
-
-                    ////alt method #2
-                    //ViewBag.Title = books.Title;
-                    //ViewBag.ISBN = books.ISBN;
-                    //return View("DonateReceipt");
-
-                    //ViewBag.DonatedBook = books;
-                    //return View("DonateReceipt");
-                }
-            }
+            //    }
+            //}
 
             return View("ReserveReceipt", books);
         }
 
         [HttpGet]
-        public ActionResult ReserveReceipt()
+        public ActionResult ReserveReceipt(string ISBN)
         {
-            return View();
+            var rec = db.Books.Where(b => b.ISBN == ISBN).FirstOrDefault();
+
+            if (rec != null && rec.QtyAvailable != 0)  //book exists
+            {
+                rec.QtyAvailable -= 1;
+                db.Entry(rec).State = EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Message = "You reservation is complete!  The pick up information is below.";
+            }
+            else
+            {
+                ViewBag.Message = "No copies exist for this book";
+            }
+
+            return View("ReserveReceipt");
         }
     }
 
