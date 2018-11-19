@@ -1,4 +1,4 @@
-﻿@model BookDonation.Web.BooksViewModels.ReserveBookVM
+﻿@model IEnumerable<BookDonation.DB.BooksViewModels.ReserveListVM>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -22,45 +22,85 @@
 <div class="instructions">
     <div class="ptext">
         <ol>
-            1. Enter Book Title, Author, and desired Pick Up Day for Book.
-
-            2. Submit Reserve request.
+            If you wish to reserve a book, simply click the "Reserve" link
         </ol>
     </div>
 </div>
 
-@using (Html.BeginForm())
-{
-    <fieldset>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Title)
-        </div>
-        <div class="title-label">
-            @Html.LabelFor(model => model.Author)
-        </div>
-        <div class="title-field">
-            @Html.TextBoxFor(model => model.Author)
-        </div>
-        <br /><br />
-        <input id="Reserve" type="submit" value="submit" />
-        <input id="Cancel" type="reset" value="reset" />
-    </fieldset>
-}
 
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#hide").click(function () {
-            $("#toggle").slideToggle();
+    @using (Html.BeginForm())
+    {
+    <fieldset>
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISBN)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QtyAvailable)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QtyAvailable)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("Reserve", "Reserve", new { isbn = item.ISBN })
+                    </td>
+                </tr>
+            }
+        </table>
+        
+            <br /><br />
+        @*<input id="Reserve" type="submit" value="submit" />
+        <input id="Cancel" type="reset" value="reset" />*@
+    </fieldset>
+    }
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $("#toggle").slideToggle();
+            });
+            $("#show").click(function () {
+                $("#toggle").slideToggle();
+            });
         });
-        $("#show").click(function () {
-            $("#toggle").slideToggle();
-        });
-    });
-</script>
+    </script>
 
 
 
