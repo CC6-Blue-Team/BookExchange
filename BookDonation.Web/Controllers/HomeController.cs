@@ -55,23 +55,33 @@ namespace _1.BookDonation.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Donate([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
         {
+           
             if (ModelState.IsValid)
             {
-                db.Books.Add(books);
-                db.SaveChanges();
-                //return RedirectToAction("DonateReceipt");  //Original approach
+                bool bookExists = db.Books.Any(b => b.ISBN.Equals(books.ISBN));
 
-                ////alt method #1
-                return View("DonateReceipt", books);
+                if (bookExists)
+                {
+                    return View(books);
+                }
+                else
+                {
+                    db.Books.Add(books);
+                    db.SaveChanges();
 
-                ////alt method #2
-                //ViewBag.Title = books.Title;
-                //ViewBag.ISBN = books.ISBN;
-                //return View("DonateReceipt");
+                    //return RedirectToAction("DonateReceipt");  //Original approach
 
-                //ViewBag.DonatedBook = books;
-                //return View("DonateReceipt");
+                    ////alt method #1
+                    return View("DonateReceipt", books);
 
+                    ////alt method #2
+                    //ViewBag.Title = books.Title;
+                    //ViewBag.ISBN = books.ISBN;
+                    //return View("DonateReceipt");
+
+                    //ViewBag.DonatedBook = books;
+                    //return View("DonateReceipt");
+                }
             }
 
             return View(books);
