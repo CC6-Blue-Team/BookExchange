@@ -30,6 +30,9 @@ namespace BookDonation.DB.BooksViewModels
             ErrorMessage = "Please enter a Quantity value 1 or greater")]
         public byte QtyAvailable { get; set; }
 
+        [Required]
+        public byte[] Image { get; set; }
+
         public IEnumerable<SelectListItem> Genre
         {
             get
