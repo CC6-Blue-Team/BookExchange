@@ -8,17 +8,6 @@ namespace BookDonation.Business
 {
     public class Calculations
     {
-        public byte AddQty(byte qtyAvail)
-        {
-            int TotAvail = Convert.ToInt32(qtyAvail) + 1;
-            return qtyAvail = Convert.ToByte(TotAvail);
-        }
-
-        public byte MinusQty(byte qtyAvail)
-        {
-            int TotAvail = Convert.ToInt32(qtyAvail) - 1;
-            return qtyAvail = Convert.ToByte(TotAvail);
-        }
 
         public class DueDate
         {

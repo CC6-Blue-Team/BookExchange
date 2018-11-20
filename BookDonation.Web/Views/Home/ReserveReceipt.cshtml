@@ -1,78 +1,18 @@
 ﻿@model BookDonation.DB.Books
 
 @{
-    ViewBag.Title = "Your reservation receipt";
+    ViewBag.Title = "Your Reservation Receipt";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div>
-
-    <h2>@ViewBag.Message</h2>
-
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QtyAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QtyAvailable)
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.authors)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.authors)
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ISBN)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ISBN)
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.genres)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.genres)
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayName("Pick Up deadline")
-        </dt>
-        <dd>
-            @ViewBag.Tax
-        </dd>
-    </dl>
+    <h2>@ViewBag.PickupDeadline is the last day to pick up your new book. Enjoy!</h2> <br />
 </div>
 
-<button onclick="PrintFunction()" id="btn" class="btn">Print receipt</button>
+@*<button onclick="PrintFunction()" id="btn" class="btn">Print receipt</button>
 
 <script>
    function PrintFunction() {
        window.print();
    }
-</script>
+</script>*@
