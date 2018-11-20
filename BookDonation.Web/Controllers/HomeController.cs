@@ -119,25 +119,7 @@ namespace _1.BookDonation.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Reserve([Bind(Include = "Id,Title,ISBN, Image, QtyAvailable,GenreId,AuthorId")] Books books)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var rec = db.Books.Where(b => b.ISBN == books.ISBN).FirstOrDefault();
-
-            //    if (rec != null)  //book exists
-            //    {
-            //        rec.QtyAvailable -= books.QtyAvailable;
-            //        db.Entry(rec).State = EntityState.Modified;
-            //        db.SaveChanges();
-            //    }
-            //    else
-            //    {
-
-            //        return View("ReserveReceipt", books);
-
-            //    }
-            //}
-
-            return View("ReserveReceipt", books);
+            return View("ReserveReceipt");
         }
 
         [HttpGet]
